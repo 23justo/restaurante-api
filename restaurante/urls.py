@@ -21,6 +21,8 @@ from rest_framework.authtoken import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include('Inventario.urls', namespace='Inventario')),
+    url(r'^api/v1/compras/', include('Compras.urls', namespace='Compras')),
+
 ]
 urlpatterns += [
     url(r'^api/v1/auth', include('rest_framework.urls', namespace='rest_framework')),
