@@ -9,7 +9,7 @@ class OrdenSerializer(ModelSerializer):
 class OrdenProductoSerializer(ModelSerializer):
     class Meta:
         model = OrdenProducto
-        fields = ('id','producto','orden')
+        fields = ('id','producto','orden','estado')
 
 class FacturaSerializer(ModelSerializer):
     class Meta:

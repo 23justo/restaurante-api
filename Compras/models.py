@@ -9,8 +9,15 @@ class Orden(models.Model):
         return self.numero_mesa
 
 class OrdenProducto(models.Model):
+    estado = (
+        ('Entregado','Entregado'),
+        ('Preparando','Preparando'),
+        ('en_espera','En espera')
+    )
+    ('En espera','en_espera')
     orden = models.ForeignKey('Orden')
     producto = models.ForeignKey(Producto)
+    estado = models.CharField(max_length=250, choices=estado)
     def __str__(self):
         return self.orden.numero_mesa + self.producto.nombre
 
