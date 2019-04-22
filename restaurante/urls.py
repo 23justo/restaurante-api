@@ -16,20 +16,28 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf import settings
-from rest_framework.authtoken import views
+from rest_framework.authtoken import views as rest_framework_views
 from Usuario.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include('Inventario.urls', namespace='Inventario')),
     url(r'^api/v1/compras/', include('Compras.urls', namespace='Compras')),
+    # docs
     url(r'^$', InicioView.as_view(), name='InicioView'),
-    url(r'^autenticacion', AutenticacionView.as_view(), name='AutenticacionView'),
+    url(r'^autenticacion/$', AutenticacionView.as_view(), name='AutenticacionView'),
+    url(r'^insumo/$', InsumoView.as_view(), name='InsumoView'),
+    url(r'^tipoinsumo/$', TipoInsumoView.as_view(), name='TipoInsumoView'),
+    url(r'^producto/$', ProductoView.as_view(), name='ProductoView'),
+    url(r'^promocion/$', PromocionView.as_view(), name='PromocionView'),
+    url(r'^promocionproducto/$', PromocionProductoView.as_view(), name='PromocionProductoView'),
 
+
+    url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
 ]
 urlpatterns += [
     url(r'^api/v1/auth', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api-token-auth/', views.obtain_auth_token, name="api-token-auth"),
+    url(r'^api-token-auth/', rest_framework_views.obtain_auth_token, name="api-token-auth"),
 
 ]
 

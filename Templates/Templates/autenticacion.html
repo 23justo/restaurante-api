@@ -1,4 +1,44 @@
 {% extends 'Templates/index.html' %} 
     {% block body %}
-        <pre><code class="language-css">p { color: red }</code></pre>
+        <div>
+            <h2>Obtener Token de autenticacion utilizando credenciales.</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo POST hacia URL:<br>http://23justo.pythonanywhere.com/get_auth_token/</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+                            Cuerpo del JSON de peticion
+                                {
+                                    "username":"root",
+                                    "password":"rootroot"
+                                }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta con los credenciales correctos</h4>
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+                                Respuesta
+                                    {
+                                        "token": "766bccdb99a24a303b70aa3602d94c009f552bf2"
+                                    }
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+        </div>
+        
     {% endblock %}

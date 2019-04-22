@@ -1,0 +1,96 @@
+{% extends 'Templates/index.html' %} 
+    {% block body %}
+        <div>
+            <h2>Listado de Productos</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>http://127.0.0.1:8000/api/v1/producto/?offset=0</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                            El parametro offset es un indicador de cuantos registros se deben saltar, se debe de tomar en cuenta que la paginacion por defecto siempre sera de 10 objetos.<br>
+                            Para obtener la siguiente pagina de registros se debe de utilizar la url:<br><b>http://127.0.0.1:8000/api/v1/producto/?offset=10</b>
+                            
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+Listado de Productos
+[
+    {
+        "id": 1,
+        "nombre": "pan",
+        "precio": 100.0
+    },
+    {
+        "id": 2,
+        "nombre": "tortilla",
+        "precio": 200.0
+    }
+]
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+        </div>
+        <div>
+            <h2>Creacion de un Producto</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo POST hacia URL:<br>http://127.0.0.1:8000/api/v1/producto/</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+            "nombre": "insertar aqui nombre del producto",
+            "precio": 100
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo POST</h4><br>
+                            <pre>
+                                    <code class="language-css">
+Cuerpo del JSON de Respuesta
+    {
+        "id": 3,
+        "nombre": "Ejemplo creacion",
+        "precio": 100
+    }
+                                    </code>
+                                </pre>
+                            
+                    </div>
+                </div>
+        </div>
+        
+    {% endblock %}

@@ -40,8 +40,8 @@ class ProductoList(generics.ListCreateAPIView):
         return obj
 
 class PromocionList(generics.ListCreateAPIView):
-    queryset = Producto.objects.all()
-    serializer_class = ProductoSerializer
+    queryset = Promocion.objects.all()
+    serializer_class = PromocionSerializer
     def get_object(self):
         queryset = self.get_queryset()
         obj = get_object_or_404(
@@ -78,4 +78,30 @@ def InsumoDetail(request,pk):
         }
     }
     return JsonResponse(data, safe=False)
+
+def PromocionDetail(request,pk):
+    promocion = get_object_or_404(Promocion,pk=pk)
+    promocionproducto = PromocionProducto.objects.filter(promocion=promocion)
+    promocionproducto_dict = {}
+    index = 0
+    for dato in promocionproducto:
+        producto = Producto.objects.get(pk=dato.producto.pk)
+        promocionproducto_dict[index] = {
+            'id': producto.pk,
+            'nombre': producto.nombre,
+            'precio': producto.precio
+        }
+        
+        index = index + 1
+    data = {
+        'pk': promocion.pk,
+        'nombre': promocion.nombre,
+        'precio': promocion.precio,
+        'activa': promocion.activa,
+        'productos': promocionproducto_dict
+    }
+    return JsonResponse(data, safe=False)
+
+
+
 

@@ -1,0 +1,97 @@
+{% extends 'Templates/index.html' %} 
+    {% block body %}
+        <div>
+            <h2>Listado de Tipos Insumo</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>127.0.0.1:8000/api/v1/tipoinsumo/?offset=0</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                            El parametro offset es un indicador de cuantos registros se deben saltar, se debe de tomar en cuenta que la paginacion por defecto siempre sera de 10 objetos.<br>
+                            Para obtener la siguiente pagina de registros se debe de utilizar la url:<br><b>127.0.0.1:8000/api/v1/tipoinsumo/?offset=10</b>
+                            
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+Listado de Tipos de Insumos
+[
+    {
+        "id": 1,
+        "nombre": "TipoInsumo 1",
+        "producto": 1
+    },
+    {
+        "id": 2,
+        "nombre": "TipoInsumo 2",
+        "producto": 1
+    }
+]
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+        </div>
+        <div>
+            <h2>Creacion de un Tipo Insumo</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo POST hacia URL:<br>http://127.0.0.1:8000/api/v1/tipoinsumo/</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+            "nombre": "insertar aqui nombre de tipo insumo",
+            "producto": 1
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                    Nota: producto es el id de un registro tipo Producto, para obtener este id consultar la seccion <a href="#">Productos</a>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo POST</h4><br>
+                            <pre>
+                                    <code class="language-css">
+Cuerpo del JSON de Respuesta
+    {
+        "id": 3,
+        "nombre": "Ejemplo creacion",
+        "producto": 1
+    }
+                                    </code>
+                                </pre>
+                            
+                    </div>
+                </div>
+        </div>
+        
+    {% endblock %}
