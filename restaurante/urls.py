@@ -17,11 +17,14 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf import settings
 from rest_framework.authtoken import views
+from Usuario.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include('Inventario.urls', namespace='Inventario')),
     url(r'^api/v1/compras/', include('Compras.urls', namespace='Compras')),
+    url(r'^$', InicioView.as_view(), name='InicioView'),
+    url(r'^autenticacion', AutenticacionView.as_view(), name='AutenticacionView'),
 
 ]
 urlpatterns += [
