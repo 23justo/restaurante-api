@@ -1,0 +1,184 @@
+{% extends 'Templates/index.html' %} 
+    {% block body %}
+        <div>
+            <h2>Listado de Insumo</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>http://127.0.0.1:8000/api/v1/insumo/?offset=0</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                            El parametro offset es un indicador de cuantos registros se deben saltar, se debe de tomar en cuenta que la paginacion por defecto siempre sera de 10 objetos.<br>
+                            Para obtener la siguiente pagina de registros se debe de utilizar la url:<br><b>http://127.0.0.1:8000/api/v1/insumo/?offset=10</b>
+                            
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+Listado de Insumos
+[
+{
+    "id": 1,
+    "nombre": "Insumo 1",
+    "tipo_insumo": 1
+},
+{
+    "id": 2,
+    "nombre": "Insumo 2",
+    "tipo_insumo": 1
+},
+{
+    "id": 3,
+    "nombre": "Insumo 3",
+    "tipo_insumo": 1
+},
+{
+    "id": 4,
+    "nombre": "insumo 4",
+    "tipo_insumo": 1
+},
+{
+    "id": 5,
+    "nombre": "insumo 5",
+    "tipo_insumo": 1
+}
+]
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+        </div>
+
+        <div>
+                <h2>Obtener Solo un Insumo y sus detalles</h2>
+                <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>http://127.0.0.1:8000/api/v1/insumo/15</h4>
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+        Cuerpo del JSON de peticion
+            {
+            }
+        Headers:
+            Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                            </code>
+                        </pre>
+                        Nota: El numero 15 que se muestra en la URL es el pk del objeto deseado
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                        <div class="col-md-6">
+                                <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                                <pre>
+                                        <code class="language-css">
+    Cuerpo del JSON de Respuesta
+    {
+        pk:	15,
+        nombre:	"Insumo 1",
+        tipo_insumo: {
+            pk:	1,
+            nombre:	"TipoInsumo 1",
+            producto:	{
+                pk:	1,
+                nombre:	"pan",
+                precio:	100
+            }
+        }	
+    }
+    
+                                        </code>
+                                    </pre>
+                                
+                        </div>
+                    </div>
+        </div>
+
+                
+
+        
+        <div>
+            <h2>Creacion de un Insumo</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo POST hacia URL:<br>http://127.0.0.1:8000/api/v1/insumo/</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+            "nombre": "insertar aqui nombre de insumo",
+            "tipo_insumo": 1
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                    Nota: el tipo de insumo hace referencia a un id, para obtener dicho id consultar la seccion de <a href="{% url 'TipoInsumoView' %}">Tipos de Insumo</a>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo POST</h4><br>
+                            <pre>
+                                    <code class="language-css">
+Cuerpo del JSON de Respuesta
+    {
+        "id": 30,
+        "nombre": "insumo 2.11",
+        "tipo_insumo": 2
+    }
+
+Errores Comunes en peticiones:
+1.
+    "tipo_insumo": [
+        "Invalid pk \"55\" - object does not exist."
+    ]
+    Verificar el id de tipo_insumo
+
+2.
+    {
+        "nombre": [
+            "This field is required."
+        ],
+        "tipo_insumo": [
+            "This field is required."
+        ]
+    }
+    Los parametros no se estan enviando a la vista
+
+                                    </code>
+                                </pre>
+                            
+                    </div>
+                </div>
+        </div>
+        
+    {% endblock %}

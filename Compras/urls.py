@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^factura/$',FacturaList.as_view(), name='FacturaList'),
     # ----------- fin urls base -------------------------------------------    
     url(r'^ordenproductodetalle/(?P<pk>\d+)$',OrdenProductoDetalle, name='OrdenProductoDetalle'),
-    url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
+    
 ]
