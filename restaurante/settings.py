@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'Usuario',
     'Inventario',
     'Compras',
 ]
@@ -145,3 +146,4 @@ STATICFILES_DIRS = [
     # '/var/www/static/',
 ]
 LOGIN_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'Usuario.Usuario'

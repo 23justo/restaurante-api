@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include('Inventario.urls', namespace='Inventario')),
     url(r'^api/v1/compras/', include('Compras.urls', namespace='Compras')),
+    url(r'^api/v1/usuario/', include('Usuario.urls', namespace='Usuario')),
     # docs
     url(r'^$', InicioView.as_view(), name='InicioView'),
     url(r'^autenticacion/$', AutenticacionView.as_view(), name='AutenticacionView'),
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^promocion/$', PromocionView.as_view(), name='PromocionView'),
     url(r'^promocionproducto/$', PromocionProductoView.as_view(), name='PromocionProductoView'),
     url(r'^orden/$', OrdenView.as_view(), name='OrdenView'),
+    url(r'^usuario/$', UsuarioView.as_view(), name='UsuarioView'),
 
 
     url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),

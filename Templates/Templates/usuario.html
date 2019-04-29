@@ -1,0 +1,151 @@
+{% extends 'Templates/index.html' %} 
+    {% block body %}
+        <div>
+            <h2>Listado de Usuarios</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>http://23justo.pythonanywhere.com/api/v1/usuario/usuario/</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                            El parametro offset es un indicador de cuantos registros se deben saltar, se debe de tomar en cuenta que la paginacion por defecto siempre sera de 10 objetos.<br>
+                            Para obtener la siguiente pagina de registros se debe de utilizar la url:<br><b>http://23justo.pythonanywhere.com/api/v1/usuario/usuario/?offset=10</b>
+                            
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+Listado de Usuarios
+[
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "username": "root",
+            "nombre": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "ultima_conexion": "2019-04-29T21:09:23.412857Z",
+            "user_type": "Admin",
+            "compras_modulo": false,
+            "inventario_modulo": false,
+            "facturacion_modulo": false
+        }
+    ]
+}
+]
+
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+        </div>
+
+        <div>
+                <h2>Obtener un solo usuario</h2>
+                <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>http://23justo.pythonanywhere.com/api/v1/usuario/usuario/1</h4>
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+        Cuerpo del JSON de peticion
+            {
+            }
+        Headers:
+            Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                            </code>
+                        </pre>
+                        Nota: El numero 1 que se muestra en la URL es el pk del objeto deseado
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                        <div class="col-md-6">
+                                <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                                <pre>
+                                        <code class="language-css">
+Listado de Usuarios
+{
+    "Usuario": {
+        "id": 1,
+        "username": "root",
+        "nombre": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "ultima_conexion": "2019-04-29T21:09:23.412Z",
+        "user_type": "Admin",
+        "compras_modulo": false,
+        "inventario_modulo": false,
+        "facturacion_modulo": false
+    }
+}
+    
+                                        </code>
+                                    </pre>
+                                
+                        </div>
+                    </div>
+        </div>
+        <div>
+                <h2>Crear un usuario</h2>
+                <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Metodo POST hacia URL:<br>http://23justo.pythonanywhere.com/api/v1/usuario/usuario/</h4>
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+Cuerpo del JSON de peticion
+    {
+        "username": "",
+        "nombre": "",
+        "email": "",
+        "user_type": null,
+        "compras_modulo": false,
+        "inventario_modulo": false,
+        "facturacion_modulo": false
+    }
+Headers:
+    Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                            </code>
+                        </pre>
+                        Nota: El user_type debe ser uno de estos tres valores:<br>
+                        - 'Contador'<br>
+                        - 'Admin'<br>
+                        - 'Mesero'<br>
+                    </div>
+                </div>
+                
+        </div>
+    {% endblock %}
