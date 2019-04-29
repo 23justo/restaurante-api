@@ -22,3 +22,6 @@ class PromocionView(TemplateView):
 
 class PromocionProductoView(TemplateView):
     template_name = "Templates/promocionproducto.html"
+
+class OrdenView(TemplateView):
+    template_name = "Templates/orden.html"

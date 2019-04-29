@@ -102,6 +102,25 @@ def PromocionDetail(request,pk):
     }
     return JsonResponse(data, safe=False)
 
+def PromocionDetailProductos(request,pk):
+    promocion = get_object_or_404(Promocion,pk=pk)
+    promocionproducto = PromocionProducto.objects.filter(promocion=promocion)
+    promocionproducto_dict = {}
+    index = 0
+    for dato in promocionproducto:
+        producto = Producto.objects.get(pk=dato.producto.pk)
+        promocionproducto_dict[index] = {
+            'id': producto.pk,
+            'nombre': producto.nombre,
+            'precio': producto.precio
+        }
+        
+        index = index + 1
+    data = {
+        'productos': promocionproducto_dict
+    }
+    return JsonResponse(data, safe=False)
+
 
 
 

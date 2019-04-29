@@ -1,0 +1,102 @@
+{% extends 'Templates/index.html' %} 
+    {% block body %}
+        <div>
+            <h2>Listado de Ordenes</h2>
+            <div class="row  justify-content-center">
+                <div class="col-md-6">
+                        <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>http://23justo.pythonanywhere.com/api/v1/compras/orden/</h4>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                
+                <div class="col-md-6">
+                    <pre>
+                        <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                            El parametro offset es un indicador de cuantos registros se deben saltar, se debe de tomar en cuenta que la paginacion por defecto siempre sera de 10 objetos.<br>
+                            Para obtener la siguiente pagina de registros se debe de utilizar la url:<br><b>http://23justo.pythonanywhere.com/api/v1/compras/orden/?offset=10</b>
+                            
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+Listado de Ordenes
+[
+    {
+        "id": 1,
+        "numero_mesa": "1"
+    }
+]
+
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+        </div>
+
+        <div>
+                <h2>Obtener Solo una Orden y sus detalles</h2>
+                <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Metodo GET hacia URL:<br>http://23justo.pythonanywhere.com/api/v1/compras/ordenproductodetalle/1</h4>
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+        Cuerpo del JSON de peticion
+            {
+            }
+        Headers:
+            Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                            </code>
+                        </pre>
+                        Nota: El numero 1 que se muestra en la URL es el pk del objeto deseado
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                        <div class="col-md-6">
+                                <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
+                                <pre>
+                                        <code class="language-css">
+{
+    "OrdenProducto": {
+        "Orden": {
+            "pk": 1,
+            "numero_mesa": "1"
+        },
+        "Productos": {
+            "1": {
+                "nombre": "pan"
+            },
+            "2": {
+                "nombre": "tortilla"
+            }
+        },
+        "Total": 300.0
+    }
+}
+    
+                                        </code>
+                                    </pre>
+                                
+                        </div>
+                    </div>
+        </div>
+    {% endblock %}

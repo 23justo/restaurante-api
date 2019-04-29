@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^producto/$', ProductoView.as_view(), name='ProductoView'),
     url(r'^promocion/$', PromocionView.as_view(), name='PromocionView'),
     url(r'^promocionproducto/$', PromocionProductoView.as_view(), name='PromocionProductoView'),
+    url(r'^orden/$', OrdenView.as_view(), name='OrdenView'),
 
 
     url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
