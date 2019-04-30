@@ -4,7 +4,7 @@ from rest_framework.serializers import ModelSerializer
 class OrdenSerializer(ModelSerializer):
     class Meta:
         model = Orden
-        fields = ('id','numero_mesa',)
+        fields = ('id','numero_mesa','activa')
 
 class OrdenProductoSerializer(ModelSerializer):
     class Meta:

@@ -1,12 +1,26 @@
 from rest_framework import generics
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from random import randint
 # Imports propios
 from .models import *
 from .serializers import *
+from Inventario.models import *
+from Usuario.models import *
 
 class OrdenList(generics.ListCreateAPIView):
     queryset = Orden.objects.all()
+    serializer_class = OrdenSerializer
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(
+            queryset,
+            pk=self.kwargs['pk'],
+        )
+        return obj
+
+class OrdenListActivas(generics.ListCreateAPIView):
+    queryset = Orden.objects.filter(activa = True)
     serializer_class = OrdenSerializer
     def get_object(self):
         queryset = self.get_queryset()
@@ -65,3 +79,22 @@ def OrdenProductoDetalle(request,pk):
         }
     }
     return JsonResponse(data, safe=False)
+
+# pk pertenece a una orden
+def facturar(request,pk):
+    orden = get_object_or_404(Orden,pk=pk)
+    usuario = Usuario.objects.get(pk = request.user.pk)
+    orden.activa = False
+    orden.save()
+    factura = Factura(
+        orden = orden,
+        correlativo = randint(0, 9999999999),
+        encargado = usuario,
+    )
+    factura.save()
+    data = {
+        'mensaje': 'Se ha facturado exitosamente.',
+
+    }
+    return JsonResponse(data, safe=False)
+

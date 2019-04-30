@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 class Orden(models.Model):
     numero_mesa = models.CharField(max_length=10)
+    activa = models.BooleanField(default=True)
     def __str__(self):
         return self.numero_mesa
 
@@ -24,3 +25,4 @@ class OrdenProducto(models.Model):
 class Factura(models.Model):
     orden = models.ForeignKey('Orden')
     correlativo = models.IntegerField(validators=[MinValueValidator(0)])
+    encargado = models.ForeignKey('Usuario.Usuario',null = True, blank = True)

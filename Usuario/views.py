@@ -68,3 +68,22 @@ def UsuarioDetalle(request,pk):
         }
     }
     return JsonResponse(data, safe=False)
+
+def UsuarioDetalleUsername(request,username):
+    usuario = get_object_or_404(Usuario,username=username)
+    data = {
+        'Usuario':{
+            'id': usuario.pk,
+            'username': usuario.username,
+            'nombre': usuario.nombre,
+            'email': usuario.email,
+            'is_staff': usuario.is_staff,
+            'is_active': usuario.is_active,
+            'ultima_conexion': usuario.ultima_conexion,
+            'user_type': usuario.user_type,
+            'compras_modulo': usuario.compras_modulo,
+            'inventario_modulo': usuario.inventario_modulo,
+            'facturacion_modulo': usuario.facturacion_modulo
+        }
+    }
+    return JsonResponse(data, safe=False)

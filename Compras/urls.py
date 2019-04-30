@@ -4,9 +4,10 @@ from rest_framework.authtoken import views as rest_framework_views
 urlpatterns = [
     # ------------- urls base --------------------------------------------
     url(r'^orden/$',OrdenList.as_view(), name='OrdenList'),
-    # url(r'^orden/(?P<pk>\d+)$',OrdenDetail.as_view(), name='OrdenDetail'),
+    url(r'^ordenactiva/$',OrdenListActivas.as_view(), name='OrdenListActivas'),
     url(r'^ordenproducto/$',OrdenProductoList.as_view(), name='OrdenProductoList'),
     url(r'^factura/$',FacturaList.as_view(), name='FacturaList'),
+    url(r'^factura/facturar/(?P<pk>\d+)$',facturar, name='Facturar'),
     # ----------- fin urls base -------------------------------------------    
     url(r'^ordenproductodetalle/(?P<pk>\d+)$',OrdenProductoDetalle, name='OrdenProductoDetalle'),
     
