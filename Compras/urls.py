@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^orden/$',OrdenList.as_view(), name='OrdenList'),
     url(r'^ordenactiva/$',OrdenListActivas.as_view(), name='OrdenListActivas'),
     url(r'^ordenproducto/$',OrdenProductoList.as_view(), name='OrdenProductoList'),
+    url(r'^ordenproductoactiva/$',OrdenProductoActiva, name='OrdenProductoActiva'),
     url(r'^factura/$',FacturaList.as_view(), name='FacturaList'),
     url(r'^factura/facturar/(?P<pk>\d+)$',facturar, name='Facturar'),
     # ----------- fin urls base -------------------------------------------    

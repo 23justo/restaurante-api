@@ -29,6 +29,48 @@ class OrdenListActivas(generics.ListCreateAPIView):
             pk=self.kwargs['pk'],
         )
         return obj
+    def get_queryset(self):
+        
+        return queryset
+
+def OrdenProductoActiva(request):
+    orden = Orden.objects.filter(activa = True)
+    ordenes = {}
+    contador_orden = 0
+    for orden_dato in orden:
+        ordenes_dict_temporal = {}
+        ordenproducto = OrdenProducto.objects.filter(orden=orden_dato)
+        productos = {}
+        contador = 0
+        total = 0
+        for dato in ordenproducto:
+            diccionario = {}
+            total += dato.producto.precio
+            contador = contador + 1
+            diccionario = {
+                dato.pk:{
+                    'nombre':dato.producto.nombre,
+                    'estado':dato.estado
+                }
+            }
+            productos.update(diccionario)
+        data = {
+            contador_orden:{
+                'OrdenProducto':{
+                    'Orden':{
+                        'pk':orden_dato.pk,
+                        'numero_mesa':orden_dato.numero_mesa
+                    },
+                    'Productos':productos,
+                    'Total': total
+                }
+            }
+        }
+        ordenes.update(data)
+        contador_orden = contador_orden + 1
+    return JsonResponse(ordenes, safe=False)
+
+
 
 class OrdenProductoList(generics.ListCreateAPIView):
     queryset = OrdenProducto.objects.all()
@@ -64,7 +106,8 @@ def OrdenProductoDetalle(request,pk):
         contador = contador + 1
         diccionario = {
             dato.pk:{
-                'nombre':dato.producto.nombre
+                'nombre':dato.producto.nombre,
+                'estado':dato.producto.estado
             }
         }
         productos.update(diccionario)
