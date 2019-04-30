@@ -56,7 +56,7 @@ Listado de Tipos de Insumos
             <h2>Creacion de un Tipo Insumo</h2>
             <div class="row  justify-content-center">
                 <div class="col-md-6">
-                        <h4 style="padding-top:50px;">Metodo POST hacia URL:<br>http://127.0.0.1:8000/api/v1/tipoinsumo/</h4>
+                        <h4 style="padding-top:50px;">Metodo POST hacia URL:<br>http://23justo.pythonanywhere.com/api/v1/tipoinsumo/</h4>
                 </div>
             </div>
             <div class="row  justify-content-center">
@@ -81,7 +81,7 @@ Listado de Tipos de Insumos
                             <h4 style="padding-top:50px;">Respuesta Metodo POST</h4><br>
                             <pre>
                                     <code class="language-css">
-Cuerpo del JSON de Respuesta
+    Cuerpo del JSON de Respuesta
     {
         "id": 3,
         "nombre": "Ejemplo creacion",
@@ -93,5 +93,47 @@ Cuerpo del JSON de Respuesta
                     </div>
                 </div>
         </div>
+        <div>
+                <h2>Edicion de un Tipo Insumo</h2>
+                <div class="row  justify-content-center">
+                    <div class="col-md-6">
+                            <h4 style="padding-top:50px;">Metodo PUT hacia URL:<br>http://23justo.pythonanywhere.com/api/v1/tipoinsumoupdate/Pan</h4>
+                            Se debe ingresar el nombre del TipoInsumo para su modificacion
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    
+                    <div class="col-md-6">
+                        <pre>
+                            <code class="language-css">
+    Cuerpo del JSON de peticion
+        {
+            "nombre": "insertar aqui nombre de insumo",
+            "producto": 1
+        }
+    Headers:
+        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+                            </code>
+                        </pre>
+    
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                        <div class="col-md-6">
+                                <h4 style="padding-top:50px;">Respuesta Metodo PUT</h4><br>
+                                <pre>
+                                        <code class="language-css">
+    Cuerpo del JSON de Respuesta
+    {
+        "id": 1,
+        "nombre": "nuevo nombre",
+        "producto": 1
+    }
+                                        </code>
+                                    </pre>
+                                
+                        </div>
+                    </div>
+            </div>
         
     {% endblock %}

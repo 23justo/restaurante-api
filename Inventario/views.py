@@ -17,6 +17,12 @@ class InsumoList(generics.ListCreateAPIView):
         )
         return obj
 
+class InsumoUpdate(generics.UpdateAPIView):
+    queryset = Insumo.objects.all()
+    serializer_class = InsumoSerializer
+    lookup_field  = 'nombre'
+
+
 class TipoInsumoList(generics.ListCreateAPIView):
     queryset = TipoInsumo.objects.all()
     serializer_class = TipoInsumoSerializer
@@ -28,6 +34,11 @@ class TipoInsumoList(generics.ListCreateAPIView):
         )
         return obj
 
+class TipoInsumoUpdate(generics.UpdateAPIView):
+    queryset = TipoInsumo.objects.all()
+    serializer_class = TipoInsumoSerializer
+    lookup_field  = 'nombre'
+
 class ProductoList(generics.ListCreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
@@ -38,6 +49,11 @@ class ProductoList(generics.ListCreateAPIView):
             pk=self.kwargs['pk'],
         )
         return obj
+        
+class ProductoUpdate(generics.UpdateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    lookup_field  = 'nombre'
 
 class PromocionList(generics.ListCreateAPIView):
     queryset = Promocion.objects.all()
@@ -120,7 +136,4 @@ def PromocionDetailProductos(request,pk):
         'productos': promocionproducto_dict
     }
     return JsonResponse(data, safe=False)
-
-
-
 
