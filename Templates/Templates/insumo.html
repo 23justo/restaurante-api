@@ -80,14 +80,14 @@ Listado de Insumos
                     <div class="col-md-6">
                         <pre>
                             <code class="language-css">
-        Cuerpo del JSON de peticion
-            {
-            }
-        Headers:
-            Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+Cuerpo del JSON de peticion
+    {
+    }
+Headers:
+    Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
                             </code>
                         </pre>
-                        Nota: El numero 15 que se muestra en la URL es el pk del objeto deseado
+Nota: El numero 15 que se muestra en la URL es el pk del objeto deseado
                     </div>
                 </div>
                 <div class="row  justify-content-center">
@@ -95,20 +95,20 @@ Listado de Insumos
                                 <h4 style="padding-top:50px;">Respuesta Metodo GET</h4><br>
                                 <pre>
                                         <code class="language-css">
-    Cuerpo del JSON de Respuesta
-    {
-        pk:	15,
-        nombre:	"Insumo 1",
-        tipo_insumo: {
+Cuerpo del JSON de Respuesta
+{
+    pk:	15,
+    nombre:	"Insumo 1",
+    tipo_insumo: {
+        pk:	1,
+        nombre:	"TipoInsumo 1",
+        producto:	{
             pk:	1,
-            nombre:	"TipoInsumo 1",
-            producto:	{
-                pk:	1,
-                nombre:	"pan",
-                precio:	100
-            }
-        }	
-    }
+            nombre:	"pan",
+            precio:	100
+        }
+    }	
+}
     
                                         </code>
                                     </pre>
@@ -132,13 +132,13 @@ Listado de Insumos
                 <div class="col-md-6">
                     <pre>
                         <code class="language-css">
-    Cuerpo del JSON de peticion
-        {
-            "nombre": "insertar aqui nombre de insumo",
-            "tipo_insumo": 1
-        }
-    Headers:
-        Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
+Cuerpo del JSON de peticion
+    {
+        "nombre": "insertar aqui nombre de insumo",
+        "tipo_insumo": 1
+    }
+Headers:
+    Authorization: Token 766bccdb99a24a303b70aa3602d94c009f552bf2
                         </code>
                     </pre>
                     Nota: el tipo de insumo hace referencia a un id, para obtener dicho id consultar la seccion de <a href="{% url 'TipoInsumoView' %}">Tipos de Insumo</a>
