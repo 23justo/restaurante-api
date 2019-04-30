@@ -22,6 +22,11 @@ class InsumoUpdate(generics.UpdateAPIView):
     serializer_class = InsumoSerializer
     lookup_field  = 'nombre'
 
+class InsumoDelete(generics.DestroyAPIView):
+    queryset = Insumo.objects.all()
+    serializer_class = InsumoSerializer
+    lookup_field  = 'nombre'
+
 
 class TipoInsumoList(generics.ListCreateAPIView):
     queryset = TipoInsumo.objects.all()
@@ -39,6 +44,11 @@ class TipoInsumoUpdate(generics.UpdateAPIView):
     serializer_class = TipoInsumoSerializer
     lookup_field  = 'nombre'
 
+class TipoInsumoDelete(generics.DestroyAPIView):
+    queryset = TipoInsumo.objects.all()
+    serializer_class = TipoInsumoSerializer
+    lookup_field  = 'nombre'
+
 class ProductoList(generics.ListCreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
@@ -49,8 +59,13 @@ class ProductoList(generics.ListCreateAPIView):
             pk=self.kwargs['pk'],
         )
         return obj
-        
+
 class ProductoUpdate(generics.UpdateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    lookup_field  = 'nombre'
+
+class ProductoDelete(generics.DestroyAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
     lookup_field  = 'nombre'
@@ -65,6 +80,16 @@ class PromocionList(generics.ListCreateAPIView):
             pk=self.kwargs['pk'],
         )
         return obj
+
+class PromocionUpdate(generics.UpdateAPIView):
+    queryset = Promocion.objects.all()
+    serializer_class = PromocionSerializer
+    lookup_field  = 'nombre'
+
+class PromocionDelete(generics.DestroyAPIView):
+    queryset = Promocion.objects.all()
+    serializer_class = PromocionSerializer
+    lookup_field  = 'nombre'
 
 class PromocionProductoList(generics.ListCreateAPIView):
     queryset = PromocionProducto.objects.all()
